@@ -18,15 +18,24 @@ namespace NHibernate.Search.Bridge
 
         #region IFieldBridge Members
 
-        public void Set(String name, Object value, Document document, Field.Store store)
+        public void Set(String name, Object value, Document document, Field.Store store, Boolean? omitNorms)
         {
-            string indexedString = stringBridge.ObjectToString(value);
+            var indexedString = stringBridge.ObjectToString(value);
 
             // Do not add fields on empty strings, seems a sensible default in most situations
             // TODO if Store, probably also save empty ones
             if (StringHelper.IsNotEmpty(indexedString))
             {
-                var field = new StringField(name, indexedString, store);
+                var storeType = store == Field.Store.YES ? TextField.TYPE_STORED : TextField.TYPE_NOT_STORED;
+
+                var fieldType = new FieldType(storeType);
+
+                if (omitNorms != null)
+                {
+                    fieldType.OmitNorms = omitNorms.Value;
+                }
+
+                var field = new Field(name, indexedString, fieldType);
 
                 document.Add(field);
             }

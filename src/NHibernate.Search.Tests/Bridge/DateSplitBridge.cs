@@ -8,7 +8,7 @@ namespace NHibernate.Search.Tests.Bridge
 
     public class DateSplitBridge : IFieldBridge
     {
-        public void Set(string name, object value, Document document, Field.Store store)
+        public void Set(string name, object value, Document document, Field.Store store, Boolean? omitNorms)
         {
             //DateTime date = (DateTime) value;
 

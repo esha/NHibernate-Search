@@ -1,7 +1,6 @@
 using System;
 using Lucene.Net.Documents;
 using NHibernate.Search.Bridge;
-using NHibernate.Util;
 
 namespace NHibernate.Search.Tests.Bridge
 {
@@ -9,7 +8,7 @@ namespace NHibernate.Search.Tests.Bridge
     {
         #region IFieldBridge Members
 
-        public void Set(String name, Object value, Document document, Field.Store store)
+        public void Set(String name, Object value, Document document, Field.Store store, Boolean? omitNorms)
         {
             throw new NotImplementedException();
             //String indexedString = (String) value;

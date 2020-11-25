@@ -1,3 +1,4 @@
+using System;
 using Lucene.Net.Documents;
 
 namespace NHibernate.Search.Bridge
@@ -19,6 +20,6 @@ namespace NHibernate.Search.Bridge
         /// <param name="value"></param>
         /// <param name="document"></param>
         /// <param name="store"></param>
-        void Set(string name, object value, Document document, Field.Store store);
+        void Set(string name, object value, Document document, Field.Store store, Boolean? omitNorms);
     }
 }

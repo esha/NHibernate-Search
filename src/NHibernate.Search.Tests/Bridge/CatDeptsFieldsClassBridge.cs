@@ -16,7 +16,7 @@ namespace NHibernate.Search.Tests.Bridge
         #endregion
 
         /// <inheritdoc />
-        public void Set(String name, Object value, Document document, Field.Store store)
+        public void Set(String name, Object value, Document document, Field.Store store, Boolean? omitNorms)
         {
             // In this particular class the name of the new field was passed
             // from the name field of the ClassBridge Annotation. This is not
