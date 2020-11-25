@@ -11,7 +11,7 @@ namespace NHibernate.Search.Tests.Bridge
 
         #region IFieldBridge Members
 
-        public void Set(string name, object value, Document document, Field.Store store)
+        public void Set(string name, object value, Document document, Field.Store store, Boolean? omitNorms)
         {
             // In this particular class the name of the new field was passed
             // from the name field of the ClassBridge Annotation. This is not

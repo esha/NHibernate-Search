@@ -143,7 +143,7 @@ namespace NHibernate.Search.Engine
             var doc = new Document();
 
             // TODO: Check if that should be an else?
-            idMapping.Bridge.Set(idMapping.Name, id, doc, Field.Store.YES);
+            idMapping.Bridge.Set(idMapping.Name, id, doc, Field.Store.YES, false);
 
             BuildDocumentFields(instance, doc, rootClassMapping, string.Empty);
             return doc;
@@ -238,7 +238,8 @@ namespace NHibernate.Search.Engine
                         bridgeName,
                         unproxiedInstance,
                         doc,
-                        GetStore(bridge.Store)
+                        GetStore(bridge.Store),
+                        null
                     );
                 }
                 catch (Exception e)
@@ -270,7 +271,8 @@ namespace NHibernate.Search.Engine
                     fieldName,
                     value,
                     doc,
-                    GetStore(fieldMapping.Store)
+                    GetStore(fieldMapping.Store),
+                    null
                 );
             }
             catch (Exception e)
