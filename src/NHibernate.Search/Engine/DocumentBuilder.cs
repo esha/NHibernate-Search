@@ -142,7 +142,8 @@ namespace NHibernate.Search.Engine
         {
             var doc = new Document();
 
-            // TODO: Check if that should be an else?
+            Field classField = new StringField(CLASS_FIELDNAME, TypeHelper.LuceneTypeName(entityType), Field.Store.YES);
+            doc.Add(classField);
             idMapping.Bridge.Set(idMapping.Name, id, doc, Field.Store.YES);
 
             BuildDocumentFields(instance, doc, rootClassMapping, string.Empty);
